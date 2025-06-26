@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="info-panel">
+        <button id="info-btn">?</button>
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <ol>
+                <li>Watch the sequence</li>
+                <li>Repeat the pattern</li>
+                <li>Each level adds one more step</li>
+                <li>Reach level 20 to win!</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <h1>Simon Says</h1>
+        
+        <div class="simon-board">
+            <div class="button green" data-color="green"></div>
+            <div class="button red" data-color="red"></div>
+            <div class="button yellow" data-color="yellow"></div>
+            <div class="button blue" data-color="blue"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="start-btn">Start Game</button>
+            <button id="stop-btn">Stop Game</button>
+            <button id="clear-btn">Clear Records</button>
+            
+            <div class="theme-switcher">
+                <label>Theme:</label>
+                <button class="theme-btn" data-theme="default">Default</button>
+                <button class="theme-btn" data-theme="dark">Dark</button>
+                <button class="theme-btn" data-theme="neon">Neon</button>
+            </div>
+            
+            <div class="score-display">Score: <span id="score">0</span></div>
+            <div class="strict-mode">
+                <input type="checkbox" id="strict-checkbox">
+                <label for="strict-checkbox">Strict Mode</label>
+            </div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div class="watermark">
+        Created by <span id="creator-name">Vineet</span> © <span id="current-year"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+:root {
+    --bg-color: #1a1a2e;
+    --game-bg: rgba(255,255,255,0.1);
+    --text-color: white;
+    --button-active: rgba(255,255,255,0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.game-container {
+    background: var(--game-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 420px;
+    width: 90%;
+    position: relative;
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.simon-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px auto;
+    width: 300px;
+    height: 300px;
+}
+
+.button {
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transform: translateZ(0);
+}
+
+.green {
+    background: linear-gradient(145deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.red {
+    background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.yellow {
+    background: linear-gradient(145deg, #f1c40f 0%, #f39c12 100%);
+}
+
+.blue {
+    background: linear-gradient(145deg, #3498db 0%, #2980b9 100%);
+}
+
+.button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active, .button.active {
+    transform: translateY(1px) scale(0.98);
+    opacity: 0.8;
+}
+
+.controls {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+#start-btn, #stop-btn, #clear-btn {
+    background: linear-gradient(145deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#stop-btn, #clear-btn {
+    background: linear-gradient(145deg, #6c757d 0%, #495057 100%);
+}
+
+#start-btn:hover, #stop-btn:hover, #clear-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+#start-btn:active, #stop-btn:active, #clear-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-display {
+    color: var(--text-color);
+    font-size: 18px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.strict-mode {
+    color: var(--text-color);
+    margin: 10px 0;
+    text-align: center;
+}
+
+#message {
+    color: #ff9ff3;
+    font-weight: 500;
+    min-height: 24px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.info-panel {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+#info-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.instructions {
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 200px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.info-panel:hover .instructions {
+    opacity: 1;
+}
+
+.theme-switcher {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.theme-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+}
+
+.theme-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.theme-btn.active {
+    background: rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .simon-board {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .button {
+        min-width: 100px;
+        min-height: 100px;
+    }
+}
