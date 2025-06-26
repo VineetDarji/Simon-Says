@@ -65,6 +65,16 @@ function startGame() {
     nextRound();
 }
 
+function initGameButtons() {
+    buttons.forEach(button => {
+        button.removeEventListener('click', handleButtonPress);
+        button.removeEventListener('touchstart', handleButtonPress);
+        
+        button.addEventListener('click', handleButtonPress);
+        button.addEventListener('touchstart', handleButtonPress, { passive: true });
+    });
+}
+
 function stopGame() {
     if (!gameStarted) return;
     
@@ -248,6 +258,14 @@ function initThemeSwitcher() {
 
 // Initialization
 function init() {
+    initGameButtons();
+
+    const currentYear = document.getElementById('current-year');
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    } else {
+        console.warn('current-year element not found');
+    }
     // Load high score
     highScore = parseInt(localStorage.getItem('simonHighScore')) || 0;
     updateScoreDisplay();
